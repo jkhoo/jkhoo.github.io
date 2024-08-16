@@ -34,8 +34,8 @@ function updateCounter() {
     const totalTossesElement = document.getElementById("totalTossesElement");
     const countElement = document.getElementById("countElement");
 
-    totalTossesElement.textContent = 'Total Tosses: ${numTosses}';
-    countElement.textContent = 'Heads: ${heads} (${headsPercentage.toFixed(2)}%) | Tails: ${tails} (${tailsPercentage.toFixed(2)}%)';
+    totalTossesElement.textContent = `Total Tosses: ${numTosses}`;
+    countElement.textContent = `Heads: ${heads} (${headsPercentage.toFixed(2)}%) | Tails: ${tails} (${tailsPercentage.toFixed(2)}%)`;
 }
 
 
