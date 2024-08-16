@@ -2,10 +2,35 @@
 <html>
 <head>
     <title>Coin Toss</title>
+    <style>
+        #coin {
+            animation: flip 1s ease-in-out;
+        }
+
+        @keyframes flip {
+            0% {
+                transform: rotateX(0deg);
+            }
+            50% {
+                transform: rotateX(360deg);
+            }
+            100% {
+                transform: rotateX(720deg);
+            }
+        }
+    </style>
 </head>
 <body>
+    <img src="images/coin-flip.gif" alt="A coin being flipped">
     <button onclick="tossCoin()">Toss Coin</button>
     <div id="result"></div>
+    <div id="coin"></div>
+    <div id="count">Heads: 0 Tails: 0</div>
+    <input type="number" id="num-tosses" min="1" value="1">
+    <audio id="flip-sound">
+        <source src="audio/coin-flip.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <script src="script.js"></script>
 </body>
 </html>
