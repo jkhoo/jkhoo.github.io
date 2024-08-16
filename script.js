@@ -4,7 +4,7 @@ let numHeads = 0;
 let numTails = 0;
 
 
-function tossCoinMultiple() {
+function tossMultipleCoins() {
 
     numFlips = parseInt(document.getElementById("numFlips").value);
 
