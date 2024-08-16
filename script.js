@@ -35,10 +35,6 @@ function tossCoin() {
 
 
 function updateCount() {
- 
-    
-    const headsPercentageElement = document.getElementById("headsPercentage");
-    const tailsPercentageElement = document.getElementById("tailsPercentage");
 
     const headsPercentage = (numHeads / numTosses) * 100;
     const tailsPercentage = (numTails / numTosses) * 100;
@@ -47,17 +43,9 @@ function updateCount() {
     countElement.textContent = 'Heads: ' + numHeads + ' (' + headsPercentage.toFixed(2) + '%) | Tails: ' + numTails + ' (' + tailsPercentage.toFixed(2) + '%)';
 }
 
+
+
 function playSound() {
-    const sound = document.getElementById("flip-sound");
+    const sound = document.getElementById("flipSound");
     sound.play();
-}
-
-
-function clear() {
-    numTosses = 0;
-    numHeads = 0;
-    numTails = 0;
-
-    updateCount();
-
 }
