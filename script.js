@@ -34,7 +34,7 @@ function tossCoin() {
 }
 
 
-function updateCounter() {
+function updateCount() {
  
     
     const headsPercentageElement = document.getElementById("headsPercentage");
@@ -57,5 +57,7 @@ function clear() {
     numTosses = 0;
     numHeads = 0;
     numTails = 0;
+
+    updateCount();
 
 }
