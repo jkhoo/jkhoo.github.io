@@ -10,6 +10,7 @@ function tossCoinMultiple() {
 
     for (let i = 0; i < numFlips; i++) {
         tossCoin();
+        console.log(i)
     }
 }
 
