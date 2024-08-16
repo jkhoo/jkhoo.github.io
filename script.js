@@ -5,22 +5,23 @@ let headsPercentage = 0;
 let tailsPercentage = 0;
 
 function tossCoin() {
+
+    numTosses++; // Increment total tosses before determining result
+
     const random = Math.floor(Math.random() * 2);
-    const result = document.getElementById("resultElement");
+    const resultElement = document.getElementById("resultElement");
     const coinImage = document.getElementById("coinImage");
     const countElement = document.getElementById("countElement");
     const totalTossesElement = document.getElementById("totalTosses");
     const flipSound = document.getElementById("flip-sound");
 
-    numTossses++;
-
     // Determine the result based on the random number
     if (random === 0) {
-        result.textContent = "You got Heads!";
+        resultElement.textContent = "You got Heads!";
         coinImage.src = "images/coin-heads.png";
         heads++;
     } else {
-        result.textContent = "You got Tails!";
+        resultElement.textContent = "You got Tails!";
         coinImage.src = "images/coin-tails.png";
         tails++;
     }
