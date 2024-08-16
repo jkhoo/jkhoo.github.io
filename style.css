@@ -82,6 +82,16 @@ nav a {
   margin: 0 auto;
 }
 
+#muteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#muteButton i {
+  font-size: 24px;
+}
+
 footer {
   background-color: #f0f0f0;
   padding: 20px;

@@ -69,3 +69,18 @@ function playSound() {
     const sound = document.getElementById("flipSound");
     sound.play();
 }
+
+
+
+const muteButton = document.getElementById('muteButton');
+const audio = document.getElementById('audioElement'); // Replace with your audio element
+
+muteButton.addEventListener('click', () => {
+  if (audio.muted) {
+    audio.muted = false;
+    muteButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+  } else {
+    audio.muted = true;
+    muteButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+  }
+});
