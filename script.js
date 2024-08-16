@@ -1,11 +1,22 @@
-let numTosses = 0;
+let totalTosses = 0;
+let numFlips = 0;
 let numHeads = 0;
 let numTails = 0;
 
 
+function tossCoinMultiple() {
+
+    numFlips = parseInt(document.getElementById("numFlips").value);
+
+    for (let i = 0; i < numFlips; i++) {
+        tossCoin();
+    }
+}
+
+
 function tossCoin() {
 
-    numTosses++; // Increment total tosses before determining result
+    totalTosses++; // Increment total tosses before determining result
 
     const random = Math.floor(Math.random() * 2); // Pick 0 or 1 for coin toss
     const resultElement = document.getElementById("resultElement");
@@ -36,10 +47,10 @@ function tossCoin() {
 
 function updateCount() {
 
-    const headsPercentage = (numHeads / numTosses) * 100;
-    const tailsPercentage = (numTails / numTosses) * 100;
+    const headsPercentage = (numHeads / totalTosses) * 100;
+    const tailsPercentage = (numTails / totalTosses) * 100;
 
-    totalTossesElement.textContent = 'Total Tosses: ' + numTosses;
+    totalTossesElement.textContent = 'Total Tosses: ' + totalTosses;
     countElement.textContent = 'Heads: ' + numHeads + ' (' + headsPercentage.toFixed(2) + '%) | Tails: ' + numTails + ' (' + tailsPercentage.toFixed(2) + '%)';
 }
 
