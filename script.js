@@ -25,7 +25,7 @@ function tossCoin() {
 }
 
 function updateCounter() {
-    countElement.textContent = `Heads: ${heads} Tails: ${tails}`;
+    countElement.textContent = 'Heads: ${heads} Tails: ${tails}';
 }
 
 function updateNumTosses() {
