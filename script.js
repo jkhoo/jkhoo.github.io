@@ -1,6 +1,6 @@
 let numTosses = 0;
-let heads = 0;
-let tails = 0;
+let numHeads = 0;
+let numTails = 0;
 
 
 function tossCoin() {
@@ -11,8 +11,6 @@ function tossCoin() {
     const resultElement = document.getElementById("resultElement");
     const coinImage = document.getElementById("coinImage");
     const totalTossesElement = document.getElementById("totalTossesElement");
-    const headsPercentage = (heads / numTosses) * 100;
-    const tailsPercentage = (tails / numTosses) * 100;
     const countElement = document.getElementById("countElement");    
     const flipSound = document.getElementById("flipSound");
     
@@ -21,16 +19,25 @@ function tossCoin() {
     if (random === 0) {
         resultElement.textContent = "You got Heads!";
         coinImage.src = "images/coin-heads.png";
-        heads++;
+        numHeads++;
     } else {
         resultElement.textContent = "You got Tails!";
         coinImage.src = "images/coin-tails.png";
-        tails++;
+        numTails++;
     }
 
-    totalTossesElement.textContent = 'Total Tosses: ' + numTosses;
-    countElement.textContent = 'Heads: ' + heads + ' (' + headsPercentage.toFixed(2) + '%) | Tails: ' + tails + ' (' + tailsPercentage.toFixed(2) + '%)';
+    const headsPercentage = (numHeads / numTosses) * 100;
+    const tailsPercentage = (numTails / numTosses) * 100;
 
-    var sound = document.getElementById("flipSound");
-    sound.play();
+    totalTossesElement.textContent = 'Total Tosses: ' + numTosses;
+    countElement.textContent = 'Heads: ' + numHeads + ' (' + headsPercentage.toFixed(2) + '%) | Tails: ' + numTails + ' (' + tailsPercentage.toFixed(2) + '%)';
+
+
+    playSound();
+}
+
+
+function playSound() {
+  const sound = document.getElementById("flip-sound");
+  sound.play();
 }
