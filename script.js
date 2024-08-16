@@ -6,37 +6,29 @@ let numTails = 0;
 
 function tossCoinMultiple() {
 
-    numFlips = parseInt(document.getElementById("numFlips").value);
-
     for (let i = 0; i < numFlips; i++) {
-        tossCoin();
-        console.log(i)
-    }
-}
-
-
-function tossCoin() {
-
-    totalTosses++; // Increment total tosses before determining result
-
-    const random = Math.floor(Math.random() * 2); // Pick 0 or 1 for coin toss
-    const resultElement = document.getElementById("resultElement");
-    const coinImage = document.getElementById("coinImage");
-    const totalTossesElement = document.getElementById("totalTossesElement");
-    const countElement = document.getElementById("countElement"); 
-    const flipSound = document.getElementById("flipSound");
     
+        numFlips = parseInt(document.getElementById("numFlips").value);
 
-    // Determine the result based on the random number
-    if (random === 0) {
-        resultElement.textContent = "You got Heads!";
-        coinImage.src = "images/coin-heads.png";
-        numHeads++;
-    } else {
-        resultElement.textContent = "You got Tails!";
-        coinImage.src = "images/coin-tails.png";
-        numTails++;
-    }
+        totalTosses += numFlips; // Increment total tosses before determining result
+
+        const random = Math.floor(Math.random() * 2); // Pick 0 or 1 for coin toss
+        const resultElement = document.getElementById("resultElement");
+        const coinImage = document.getElementById("coinImage");
+        const totalTossesElement = document.getElementById("totalTossesElement");
+        const countElement = document.getElementById("countElement"); 
+        const flipSound = document.getElementById("flipSound");
+
+        // Determine the result based on the random number
+        if (random === 0) {
+            resultElement.textContent = "You got Heads!";
+            coinImage.src = "images/coin-heads.png";
+            numHeads++;
+        } else {
+            resultElement.textContent = "You got Tails!";
+            coinImage.src = "images/coin-tails.png";
+            numTails++;
+        }
 
 
 
