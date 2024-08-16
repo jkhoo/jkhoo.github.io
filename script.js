@@ -1,3 +1,11 @@
+
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('open');
+}
+
+
+
 let totalTosses = 0;
 let numFlips = 0;
 let numHeads = 0;
