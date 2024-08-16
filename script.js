@@ -11,7 +11,7 @@ function tossCoin() {
     const resultElement = document.getElementById("resultElement");
     const coinImage = document.getElementById("coinImage");
     const totalTossesElement = document.getElementById("totalTossesElement");
-    const countElement = document.getElementById("countElement");    
+    const countElement = document.getElementById("countElement"); 
     const flipSound = document.getElementById("flipSound");
     
 
@@ -26,18 +26,36 @@ function tossCoin() {
         numTails++;
     }
 
+
+
+    updateCount();
+    playSound();
+
+}
+
+
+function updateCounter() {
+ 
+    
+    const headsPercentageElement = document.getElementById("headsPercentage");
+    const tailsPercentageElement = document.getElementById("tailsPercentage");
+
     const headsPercentage = (numHeads / numTosses) * 100;
     const tailsPercentage = (numTails / numTosses) * 100;
 
     totalTossesElement.textContent = 'Total Tosses: ' + numTosses;
     countElement.textContent = 'Heads: ' + numHeads + ' (' + headsPercentage.toFixed(2) + '%) | Tails: ' + numTails + ' (' + tailsPercentage.toFixed(2) + '%)';
+}
 
-
-    playSound();
+function playSound() {
+    const sound = document.getElementById("flip-sound");
+    sound.play();
 }
 
 
-function playSound() {
-  const sound = document.getElementById("flip-sound");
-  sound.play();
+function clear() {
+    numTosses = 0;
+    numHeads = 0;
+    numTails = 0;
+
 }

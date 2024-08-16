@@ -5,15 +5,16 @@
 </head>
 <body>
     <h1>Coin Toss</h1>
-    <img src="images/coin-flip.gif" alt="A coin being flipped">
+    <img id="coinImage" src="images/coin-flip.gif" alt="A coin being flipped">
     <br>
     <button onclick="tossCoin()">Toss Coin</button>
     <div id="resultElement"></div>
-    <div id="coinImage"></div>
     <br>
     <div id="totalTossesElement">Total Tosses: 0</div>
     <div id="countElement">Heads: 0 (0.00%) | Tails: 0 (0.00%)</div>
     <audio id="flipSound" src="audio/coin-flip.mp3"></audio>
+    <br>
+    <button onclick="clear()">Clear & Restart</button>
     <script src="script.js"></script>
 </body>
 </html>
