@@ -10,6 +10,12 @@ function tossCoin() {
     const random = Math.floor(Math.random() * 2); // Pick 0 or 1 for coin toss
     const resultElement = document.getElementById("resultElement");
     const coinImage = document.getElementById("coinImage");
+    const totalTossesElement = document.getElementById("totalTossesElement");
+    const headsPercentage = (heads / numTosses) * 100;
+    const tailsPercentage = (tails / numTosses) * 100;
+    const countElement = document.getElementById("countElement");    
+    const flipSound = document.getElementById("flipSound");
+    
 
     // Determine the result based on the random number
     if (random === 0) {
@@ -22,26 +28,9 @@ function tossCoin() {
         tails++;
     }
 
-    const headsPercentage = (heads / numTosses) * 100;
-    const tailsPercentage = (tails / numTosses) * 100;
-
-    updateCounter();
-    playSound();
-}
-
-
-function updateCounter() {
-    const totalTossesElement = document.getElementById("totalTossesElement");
-    const countElement = document.getElementById("countElement");
-
     totalTossesElement.textContent = 'Total Tosses: ' + numTosses;
     countElement.textContent = 'Heads: ' + heads + ' (' + headsPercentage.toFixed(2) + '%) | Tails: ' + tails + ' (' + tailsPercentage.toFixed(2) + '%)';
-}
 
-
-function playSound() {
-    const flipSound = document.getElementById("flipSound");
-    
     var sound = document.getElementById("flipSound");
     sound.play();
 }
