@@ -72,10 +72,10 @@ function playSound() {
 
 
 
-const muteButton = document.getElementById('muteButton');
-const audio = document.getElementById('audioElement'); // Replace with your audio element
+const muteButton = document.getElementById("muteButton");
+const audio = document.getElementById("flipSound"); // Replace with your audio element
 
-muteButton.addEventListener('click', () => {
+muteButton.addEventListener("click", () => {
   if (audio.muted) {
     audio.muted = false;
     muteButton.innerHTML = '<i class="fas fa-volume-up"></i>';
