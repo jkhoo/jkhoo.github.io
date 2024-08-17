@@ -6,22 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h1>Coin Toss</h1>
-    <img id="coinImage" src="images/coin-flip.gif" alt="A coin being flipped">
-    <br>
-    <label for="numFlips">Number of Flips:</label>
-    <input type="number" id="numFlips" min="1" value="1">
-    <br>
-    <button onclick="tossMultipleCoins()">Toss Coin</button>
-	<button id="muteButton"><i class="fas fa-volume-up"></i></button>
-    <br>
-    <div id="resultElement"></div>
-    <br>
-    <div id="totalTossesElement">Total Tosses: 0</div>
-    <div id="countElement">Heads: 0 (0.00%) | Tails: 0 (0.00%)</div>
-    <audio id="flipSound" src="audio/coin-flip.mp3"></audio>
-    <br>
-    <button onclick="window.location.reload()">Clear & Restart</button>
-    <script src="script.js"></script>
+	<!-- The sidebar -->
+	<div class="sidebar">
+	  <a class="active" href="#home">Home</a>
+	  <a href="#news">News</a>
+	  <a href="#contact">Contact</a>
+	  <a href="#about">About</a>
+	</div>
+	
+	<!-- Page content -->
+	<div class="content">
+		<h1>Coin Toss</h1>
+		<img id="coinImage" src="images/coin-flip.gif" alt="A coin being flipped">
+		<br>
+		<label for="numFlips">Number of Flips:</label>
+		<input type="number" id="numFlips" min="1" value="1">
+		<br>
+		<button onclick="tossMultipleCoins()">Toss Coin</button>
+		<button id="muteButton"><i class="fas fa-volume-up"></i></button>
+		<br>
+		<div id="resultElement"></div>
+		<br>
+		<div id="totalTossesElement">Total Tosses: 0</div>
+		<div id="countElement">Heads: 0 (0.00%) | Tails: 0 (0.00%)</div>
+		<audio id="flipSound" src="audio/coin-flip.mp3"></audio>
+		<br>
+		<button onclick="window.location.reload()">Clear & Restart</button>
+		<script src="script.js"></script>
+	</div>
 </body>
 </html>
