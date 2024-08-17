@@ -1,11 +1,4 @@
 
-function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('open');
-}
-
-
-
 let totalTosses = 0;
 let numFlips = 0;
 let numHeads = 0;
@@ -78,9 +71,9 @@ const audio = document.getElementById("flipSound"); // Replace with your audio e
 muteButton.addEventListener("click", () => {
   if (audio.muted) {
     audio.muted = false;
-    muteButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+    muteButton.innerHTML = '<i class="fa fa-volume-up"></i>';
   } else {
     audio.muted = true;
-    muteButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    muteButton.innerHTML = '<i class="fa fa-volume-mute"></i>';
   }
 });
