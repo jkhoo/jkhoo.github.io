@@ -66,7 +66,9 @@ function playSound() {
 
 
 const muteButton = document.getElementById("muteButton");
-const audio = document.getElementById("flipSound"); // Replace with your audio element
+const audio = document.getElementById("flipSound");
+
+audio.muted = false; // Set audio to not muted initially
 
 muteButton.addEventListener("click", () => {
   if (audio.muted) {
