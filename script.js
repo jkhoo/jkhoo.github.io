@@ -25,6 +25,7 @@ function tossCoin() {
     const coinImage = document.getElementById("coinImage");
     const totalTossesElement = document.getElementById("totalTossesElement");
     const countElement = document.getElementById("countElement"); 
+	const muteButton = document.getElementById("muteButton");
     const flipSound = document.getElementById("flipSound");
     
 
@@ -42,6 +43,18 @@ function tossCoin() {
 
 
     updateCount();
+	
+	
+	flipSound.muted = false; // Set audio to not muted initially
+	muteButton.addEventListener("click", () => {
+		if (flipSound.muted) {
+			flipSound.muted = false;
+			muteButton.innerHTML = '<i class="fa fa-volume-up"></i>';
+		} else {
+			flipSound.muted = true;
+			muteButton.innerHTML = '<i class="fa fa-volume-mute"></i>';
+		}
+	});
     playSound();
 
 }
@@ -62,20 +75,3 @@ function playSound() {
     const sound = document.getElementById("flipSound");
     sound.play();
 }
-
-
-
-const muteButton = document.getElementById("muteButton");
-const audio = document.getElementById("flipSound");
-
-audio.muted = false; // Set audio to not muted initially
-
-muteButton.addEventListener("click", () => {
-  if (audio.muted) {
-    audio.muted = false;
-    muteButton.innerHTML = '<i class="fa fa-volume-up"></i>';
-  } else {
-    audio.muted = true;
-    muteButton.innerHTML = '<i class="fa fa-volume-mute"></i>';
-  }
-});
