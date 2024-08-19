@@ -4,8 +4,11 @@ let timer;
 
 // Random color generator
 function getRandomColor() {
-    const colors = ['#3498db', '#9b59b6', '#1abc9c', '#e74c3c', '#f39c12', '#2ecc71', '#e67e22'];
-    return colors[Math.floor(Math.random() * colors.length)];
+    const r_value = Math.floor(Math.random() * 256);
+    const g_value = Math.floor(Math.random() * 256);
+    const b_value = Math.floor(Math.random() * 256);
+    
+    return `rgb(${r_value}, ${g_value}, ${b_value})`;
 }
 
 // Add a participant when the area is clicked
@@ -28,7 +31,7 @@ selectionArea.addEventListener('click', (event) => {
     // Start the selection process if there are at least 2 participants
     if (participants.length >= 2) {
         if (timer) clearTimeout(timer); // Clear any existing timer
-        timer = setTimeout(selectRandomParticipant, 2000 + Math.random() * 1000); // Select after 2 to 3 seconds
+        timer = setTimeout(selectRandomParticipant, 2000); // Select after 2 seconds
     }
 });
 
@@ -58,7 +61,7 @@ selectionArea.addEventListener('touchstart', (event) => {
     // Start the selection process if there are at least 2 participants
     if (participants.length >= 2) {
         if (timer) clearTimeout(timer); // Clear any existing timer
-        timer = setTimeout(selectRandomParticipant, 2000 + Math.random() * 1000); // Select after 2 to 3 seconds
+        timer = setTimeout(selectRandomParticipant, 2000 + Math.random()); // Select after 2 seconds
     }
 
 });
