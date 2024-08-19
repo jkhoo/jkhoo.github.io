@@ -1,203 +1,111 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px; /* Added padding */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #222;
-    color: #fff;
-}
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+        }
 
+        /* Navbar container */
+        nav {
+            background-color: #333;
+            padding: 10px 20px;
+        }
 
-/* The side navigation menu */
-ul.sidenav {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	width: 25%;
-	background-color: #f1f1f1;
-	position: fixed;
-	height: 100%;
-	overflow: auto;
-}
+        /* Flex container for navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-ul.sidenav li a {
-	display: block;
-	color: #000;
-	padding: 8px 16px;
-	text-decoration: none;
-}
- 
-ul.sidenav li a.active {
-	background-color: #38f2df;
-	color: black;
-}
+        /* Logo */
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-ul.sidenav li a:hover:not(.active) {
-	background-color: #555;
-	color: white;
-}
+        /* Navbar links */
+        .nav-links {
+            display: flex;
+            list-style-type: none;
+        }
 
-div.content {
-	margin-left: 25%;
-	padding: 1px 16px;
-	height: 1000px;
-}
+        .nav-links li {
+            margin: 0 15px;
+        }
 
-@media screen and (max-width: 900px) {
-	ul.sidenav {
-		width: 100%;
-		height: auto;
-		position: relative;
-	}
-  
-	ul.sidenav li a {
-		float: left;
-		padding: 15px;
-	}
-  
-	div.content { margin-left: 0; }
-}
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
 
-@media screen and (max-width: 400px) {
-	ul.sidenav li a {
-		text-align: center;
-		float: none;
-	}
-}
+        .nav-links a:hover {
+            color: #ddd;
+        }
 
+        /* Active page styling */
+        .nav-links a.active {
+            color: #4CAF50; /* Highlight color for active link */
+            font-weight: bold;
+        }
 
+        /* Hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
+        }
 
-header {
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
+        /* Hamburger line styles (three bars) */
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px;
+            transition: 0.4s;
+        }
 
-h1 {
-    text-align: center;
-    color: #333;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: #333;
+            }
 
-p {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-}
+            .nav-links.active {
+                display: flex;
+            }
 
-img {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    height: auto;
-}
+            .hamburger {
+                display: block;
+            }
 
-#muteButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-}
+            .nav-links li {
+                margin: 10px 0;
+            }
+        }
 
-/* Game Container */
-.game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        /* Animation for the X (close icon) */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
 
-/* Player and Dealer Hands */
-.player-hand, .dealer-hand {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
 
-.card {
-    width: 70px;
-    height: 100px;
-    background-color: white;
-    border: 1px solid black;
-    margin: 0 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    position: relative;
-}
-
-.card:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: "images/sunset.png";
-  background-size: cover;
-}
-
-.card.flipped:before {
-  content: '';
-  display: none;
-}
-
-.card .card-face {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;  
-  font-weight: bold;
-}
-
-.card.ace {
-    background-color: #ffeb3b; /* Example: Yellow background for Ace cards */
-    color: #000;
-}
-
-/* Game Controls */
-.game-controls {
-    display: flex;
-    gap: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 20px; /* Added font-size for consistency */
-}
-
-button:hover {
-    background-color: #45a049; /* Added hover effect */
-}
-
-/* Game Information */
-.game-info {
-    margin-top: 20px;
-    text-align: center;
-}
-
-footer {
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
