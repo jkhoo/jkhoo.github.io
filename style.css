@@ -8,8 +8,10 @@
 	body {
 		font-family: Arial, sans-serif;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		height: 100vh;
 	}
 	
 	.content {
@@ -18,6 +20,7 @@
 		text-align: center;
 		justify-content: center;
 		align-items: center;
+		width: 90%;
 		
 	}
 
@@ -44,7 +47,7 @@
 		position: absolute;
 		width: 30px;
 		height: 30px;
-		border-radius: 50%;
+		border-radius: 30%;
 	}
 
 	.participant:before {
@@ -108,7 +111,8 @@
 
 	/* Active page styling */
 	.nav-links a.active {
-		color: #4CAF50; /* Highlight color for active link */
+		background-color: ;
+		color: #42EFD2; /* Highlight color for active link */
 		font-weight: bold;
 	}
 

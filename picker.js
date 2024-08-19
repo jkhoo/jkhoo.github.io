@@ -88,6 +88,6 @@ function selectRandomParticipant() {
         // Optional: Reset the selection after the animation
         setTimeout(() => {
             chosenParticipant.classList.remove('selected');
-        }, 1500); // Adjust this time based on animation duration
+        }, 5000); // 5 seconds; adjust this time based on animation duration
     }
 }
