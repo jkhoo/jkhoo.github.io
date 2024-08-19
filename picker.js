@@ -10,9 +10,9 @@ function getRandomColor() {
 
 // Add a participant when the area is clicked
 selectionArea.addEventListener('click', (event) => {
-    const rect = selectionArea.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+	const rect = selectionArea.getBoundingClientRect();
+	const x = event.clientX - rect.left;
+	const y = event.clientY - rect.top;
 
     // Create the participant element
     const participant = document.createElement('div');
@@ -31,6 +31,38 @@ selectionArea.addEventListener('click', (event) => {
         timer = setTimeout(selectRandomParticipant, 2000 + Math.random() * 1000); // Select after 2 to 3 seconds
     }
 });
+
+// Add a participant when the area is tapped (mobile)
+selectionArea.addEventListener('touchstart', (event) => {
+	
+	// Prevent default behavior to prevent scrolling
+	event.preventDefault();
+
+	// Get touch coordinates
+	const touch = event.touches[0];
+	const rect = selectionArea.getBoundingClientRect();
+	const x = touch.clientX - rect.left;
+	const y = touch.clientY - rect.top;
+  
+	// Create the participant element
+    const participant = document.createElement('div');
+    participant.classList.add('participant');
+    participant.style.left = `${x}px`;
+    participant.style.top = `${y}px`;
+    participant.style.backgroundColor = getRandomColor(); // Assign a random color
+
+    // Add the participant to the screen and the list
+    selectionArea.appendChild(participant);
+    participants.push(participant);
+
+    // Start the selection process if there are at least 2 participants
+    if (participants.length >= 2) {
+        if (timer) clearTimeout(timer); // Clear any existing timer
+        timer = setTimeout(selectRandomParticipant, 2000 + Math.random() * 1000); // Select after 2 to 3 seconds
+    }
+
+});
+
 
 // Function to randomly select a participant
 function selectRandomParticipant() {
