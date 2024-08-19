@@ -9,13 +9,37 @@
     <script src="cointoss.js"></script>
 </head>
 <body>
+
 	<!-- The sidebar -->
-	<div class="sidebar">
-	  <a href="index.html">Home</a>
-	  <a href="about.html">About Us</a>
-	  <a href="cointoss.html">Coin  Toss</a>
-	  <a href="games.html">Games</a>
+	<div class="w3-sidebar w3-bar-block w3-collapse w3-card" style="width:200px;" id="mySidebar">
+		<button class="w3-bar-item w3-button w3-hide-large" onclick="w3_close()">Close &times;</button>
+			<a href="index.html" class="w3-bar-item w3-button">Home</a>
+			<a href="about.html" class="w3-bar-item w3-button">About Us</a>
+			<a href="cointoss.html" class="w3-bar-item w3-button">Coin  Toss</a>
+			<a href="blackjack.html" class="w3-bar-item w3-button">Blackjack</a>
 	</div>
+
+	<div class="w3-main" style="margin-left:200px">
+
+	<div class="w3-teal">
+		<button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+		<div class="w3-container">
+			<h1>Coin Toss</h1>
+		</div>
+		</div>
+	</div>
+
+	<script>
+		function w3_open() {
+			document.getElementById("mySidebar").style.display = "block";
+		}
+
+		function w3_close() {
+			document.getElementById("mySidebar").style.display = "none";
+		}
+	</script>
+	
+	
 	
 	<!-- Page content -->
 	<div class="content">
