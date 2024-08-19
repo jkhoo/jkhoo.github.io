@@ -6,19 +6,29 @@
   <script src="script.js"></script>
 </head>
 <body>
-  <div class="game-container">
-    <div class="dealer-hand"></div>
-    <div class="player-hand"></div>
+
+	<div class="game-container">
+		<div class="dealer-hand">
+			<div class="card"></div>
+			<div class="card"></div>
+		</div>
+		<div class="player-hand">
+			<div class="card"></div>
+			<div class="card"></div>
+		</div>
+	</div>
+	
     <div class="game-controls">
-      <button id="hitButton" onclick=hit()>Hit</button>
-      <button id="standButton" onclick=stand()>Stand</button>
+		<button id="hitButton" onclick="hit()">Hit</button>
+		<button id="standButton" onclick="stand()">Stand</button>
     </div>
-    <div class="game-info">
-      <p>Player Score: <span id="player-score"></span></p>
-      <p>Dealer Score: <span id="dealer-score"></span></p>
-      <p>Bet: <span id="bet"></span></p>
-      <p>Status: <span id="game-status"></span></p>
-    </div>
-  </div>
+	
+	<div class="game-info">
+		<p>Player Score: <span id="player-score"></span></p>
+		<p>Dealer Score: <span id="dealer-score"></span></p>
+		<p>Bet: <span id="bet"></span></p>
+		<p>Status: <span id="game-status"></span></p>
+	</div>
+	
 </body>
 </html>
