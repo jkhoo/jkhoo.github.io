@@ -48,7 +48,7 @@ function addFingerCircle(touch) {
 	const r = Math.floor(Math.random() * 256);
 	const b = Math.floor(Math.random() * 256);
 	const g = Math.floor(Math.random() * 256);
-	finger.style.color = `rgb(${r}, ${b}, ${g})`;
+	finger.style.backgroundColor = `rgb(${r}, ${b}, ${g})`;
 
     gameArea.appendChild(finger);
     touches.push(touch); // Store the touch information
