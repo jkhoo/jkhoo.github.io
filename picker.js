@@ -16,7 +16,12 @@ selectionArea.addEventListener('click', (event) => {
 	const rect = selectionArea.getBoundingClientRect();
 	const x = event.clientX - rect.left;
 	const y = event.clientY - rect.top;
+	const maxWidth = selectionArea.clientWidth - participant.clientWidth;
+	const maxHeight = selectionArea.clientHeight - participant.clientHeight;
 
+	x = Math.max(0, Math.min(x, maxWidth)); // Clamp x between 0 and max width
+	y = Math.max(0, Math.min(y, maxHeight)); // Clamp y between 0 and max height
+	
     // Create the participant element
     const participant = document.createElement('div');
     participant.classList.add('participant');
@@ -46,6 +51,11 @@ selectionArea.addEventListener('touchstart', (event) => {
 	const rect = selectionArea.getBoundingClientRect();
 	const x = touch.clientX - rect.left;
 	const y = touch.clientY - rect.top;
+	const maxWidth = selectionArea.clientWidth - participant.clientWidth;
+	const maxHeight = selectionArea.clientHeight - participant.clientHeight;
+
+	x = Math.max(0, Math.min(x, maxWidth)); // Clamp x between 0 and max width
+	y = Math.max(0, Math.min(y, maxHeight)); // Clamp y between 0 and max height
   
 	// Create the participant element
     const participant = document.createElement('div');
