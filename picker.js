@@ -43,6 +43,12 @@ function addFingerCircle(touch) {
     finger.style.left = `${touch.clientX - 35}px`; // Center the circle
     finger.style.top = `${touch.clientY - 35}px`;
     finger.innerText = touches.length + 1; // Number the finger
+	
+	// Assign a random color
+	const r = Math.floor(Math.random() * 256);
+	const b = Math.floor(Math.random() * 256);
+	const g = Math.floor(Math.random() * 256);
+	finger.style.color = `rgb(${r}, ${b}, ${g})`;
 
     gameArea.appendChild(finger);
     touches.push(touch); // Store the touch information

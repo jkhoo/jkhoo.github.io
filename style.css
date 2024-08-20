@@ -12,7 +12,7 @@
 		justify-content: center;
 		align-items: center;
 		height: 100%;
-		width: 100%;
+    width: 100%;
 		background: #282c34;
 		margin-top: 20px; /* Adjust this value to match navbar height */
 		overflow: hidden;
@@ -155,7 +155,7 @@
     text-align: center;
     width: 95%;
     height: calc(100vh - 70px); /* Adjust height accounting for the navbar */
-    background-color: #f0f0f0;
+    background-color: #282c34;
     border: 1px solid #ddd;
     margin: 70px auto 0 auto;
     position: relative;
@@ -163,9 +163,9 @@
 }
 
 #instruction {
-    color: #333;
+    color: #fff;
     font-size: 24px;
-    margin-top: 20px;
+    margin-top: 50px;
     position: absolute;
     width: 100%;
     top: 10px;
@@ -192,7 +192,6 @@
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    color: white;
     transition: transform 0.3s ease-in-out;
 }
 
