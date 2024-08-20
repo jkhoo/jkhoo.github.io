@@ -12,13 +12,13 @@
 		justify-content: center;
 		align-items: center;
 		height: 100vh;
+		margin-top: 60px; /* Adjust this value to match your navbar height */
+
 	}
 	
 	.content {
-		margin-top: 60px;
+		flex-direction: column;
 		display: flex;
-		text-align: center;
-		justify-content: center;
 		align-items: center;
 		width: 90%;
 		
