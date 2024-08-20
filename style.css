@@ -41,13 +41,13 @@
 		background-color: #f0f0f0;
 		border: 1px solid #ddd;
 		margin-top: 20px;
+		position: relative:
 	}
 	
 	.participant {
-		position: absolute;
 		width: 30px;
 		height: 30px;
-		border-radius: 30%;
+		border-radius: 42%;
 	}
 
 	.participant:before {
