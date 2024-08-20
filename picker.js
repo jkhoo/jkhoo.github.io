@@ -1,103 +1,100 @@
-const selectionArea = document.getElementById('selection-area');
-let participants = [];
-let timer;
+const gameArea = document.getElementById('game-area');
+const instruction = document.getElementById('instruction');
+const result = document.getElementById('result');
+let touches = []; // Store active touches
 
-// Random color generator
-function getRandomColor() {
-    const r_value = Math.floor(Math.random() * 256);
-    const g_value = Math.floor(Math.random() * 256);
-    const b_value = Math.floor(Math.random() * 256);
-    
-    return `rgb(${r_value}, ${g_value}, ${b_value})`;
-}
-
-// Add a participant when the area is clicked
-selectionArea.addEventListener('click', (event) => {
-	const rect = selectionArea.getBoundingClientRect();
-	const x = event.clientX - rect.left;
-	const y = event.clientY - rect.top;
-	const maxWidth = selectionArea.clientWidth - participant.clientWidth;
-	const maxHeight = selectionArea.clientHeight - participant.clientHeight;
-
-	x = Math.max(0, Math.min(x, maxWidth)); // Clamp x between 0 and max width
-	y = Math.max(0, Math.min(y, maxHeight)); // Clamp y between 0 and max height
-	
-    // Create the participant element
-    const participant = document.createElement('div');
-    participant.classList.add('participant');
-    participant.style.left = `${x}px`;
-    participant.style.top = `${y}px`;
-    participant.style.backgroundColor = getRandomColor(); // Assign a random color
-
-    // Add the participant to the screen and the list
-    selectionArea.appendChild(participant);
-    participants.push(participant);
-
-    // Start the selection process if there are at least 2 participants
-    if (participants.length >= 2) {
-        if (timer) clearTimeout(timer); // Clear any existing timer
-        timer = setTimeout(selectRandomParticipant, 2000); // Select after 2 seconds
+// Add touchstart event to track initial touches
+gameArea.addEventListener('touchstart', (event) => {
+    for (let i = 0; i < event.changedTouches.length; i++) {
+        const touch = event.changedTouches[i];
+        addFingerCircle(touch);
     }
 });
 
-// Add a participant when the area is tapped (mobile)
-selectionArea.addEventListener('touchstart', (event) => {
-	
-	// Prevent default behavior to prevent scrolling
-	event.preventDefault();
-
-	// Get touch coordinates
-	const touch = event.touches[0];
-	const rect = selectionArea.getBoundingClientRect();
-	const x = touch.clientX - rect.left;
-	const y = touch.clientY - rect.top;
-	const maxWidth = selectionArea.clientWidth - participant.clientWidth;
-	const maxHeight = selectionArea.clientHeight - participant.clientHeight;
-
-	x = Math.max(0, Math.min(x, maxWidth)); // Clamp x between 0 and max width
-	y = Math.max(0, Math.min(y, maxHeight)); // Clamp y between 0 and max height
-  
-	// Create the participant element
-    const participant = document.createElement('div');
-    participant.classList.add('participant');
-    participant.style.left = `${x}px`;
-    participant.style.top = `${y}px`;
-    participant.style.backgroundColor = getRandomColor(); // Assign a random color
-
-    // Add the participant to the screen and the list
-    selectionArea.appendChild(participant);
-    participants.push(participant);
-
-    // Start the selection process if there are at least 2 participants
-    if (participants.length >= 2) {
-        if (timer) clearTimeout(timer); // Clear any existing timer
-        timer = setTimeout(selectRandomParticipant, 2000 + Math.random()); // Select after 2 seconds
+// Add touchmove event to update the position of the fingers
+gameArea.addEventListener('touchmove', (event) => {
+    for (let i = 0; i < event.changedTouches.length; i++) {
+        const touch = event.changedTouches[i];
+        moveFingerCircle(touch);
     }
-
 });
 
+// Add touchend event to remove the finger circles when touches end
+gameArea.addEventListener('touchend', (event) => {
+    for (let i = 0; i < event.changedTouches.length; i++) {
+        const touch = event.changedTouches[i];
+        removeFingerCircle(touch);
+    }
+});
 
-// Function to randomly select a participant
-function selectRandomParticipant() {
-    if (participants.length > 1) {
-        // Clear any previous selections
-        participants.forEach(participant => participant.classList.remove('selected'));
+// Add touchcancel event (similar to touchend)
+gameArea.addEventListener('touchcancel', (event) => {
+    for (let i = 0; i < event.changedTouches.length; i++) {
+        const touch = event.changedTouches[i];
+        removeFingerCircle(touch);
+    }
+});
 
-        // Trigger haptic feedback (if supported)
-        if (navigator.vibrate) {
-            navigator.vibrate(200); // Vibrate for 200ms
-        }
+// Function to add finger circles when touch starts
+function addFingerCircle(touch) {
+    const finger = document.createElement('div');
+    finger.classList.add('finger');
+    finger.id = `finger-${touch.identifier}`;
+    finger.style.left = `${touch.clientX - 35}px`; // Center the circle
+    finger.style.top = `${touch.clientY - 35}px`;
+    finger.innerText = touches.length + 1; // Number the finger
 
-        // Choose a random participant
-        const randomIndex = Math.floor(Math.random() * participants.length);
-        const chosenParticipant = participants[randomIndex];
+    gameArea.appendChild(finger);
+    touches.push(touch); // Store the touch information
 
-        // Add flashing animation
-        chosenParticipant.classList.add('selected');
+    // Update instruction
+    instruction.innerText = 'Hold still... selecting a finger';
+}
 
-        // Optional: Reset the selection after the animation
-        setTimeout(() => {
-            chosenParticipant.classList.remove('selected');
-        }, 5000); // 5 seconds; adjust this time based on animation duration
+// Function to move finger circles as the user moves their fingers
+function moveFingerCircle(touch) {
+    const finger = document.getElementById(`finger-${touch.identifier}`);
+    if (finger) {
+        finger.style.left = `${touch.clientX - 35}px`;
+        finger.style.top = `${touch.clientY - 35}px`;
     }
 }
+
+// Function to remove finger circles when touch ends
+function removeFingerCircle(touch) {
+    const finger = document.getElementById(`finger-${touch.identifier}`);
+    if (finger) {
+        finger.remove();
+    }
+
+    // Remove the touch from the touches array
+    touches = touches.filter(t => t.identifier !== touch.identifier);
+
+    // If all touches are removed, reset instruction and result
+    if (touches.length === 0) {
+        instruction.innerText = 'Touch the screen with multiple fingers';
+        result.innerText = '';
+    }
+}
+
+// Function to select a random finger after a delay
+function selectRandomFinger() {
+    if (touches.length > 0) {
+        const randomIndex = Math.floor(Math.random() * touches.length);
+        const selectedTouch = touches[randomIndex];
+        const selectedFinger = document.getElementById(`finger-${selectedTouch.identifier}`);
+
+        // Highlight the selected finger
+        selectedFinger.classList.add('selected');
+
+        // Show the result
+        result.innerText = `Selected Finger: ${randomIndex + 1}`;
+    }
+}
+
+// Automatically select a random finger after 3 seconds of holding
+let selectionTimeout;
+gameArea.addEventListener('touchstart', () => {
+    clearTimeout(selectionTimeout); // Reset timeout if touch starts again
+    selectionTimeout = setTimeout(selectRandomFinger, 3000); // 3-second delay before selection
+});

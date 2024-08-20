@@ -11,8 +11,9 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
-		margin-top: 60px; /* Adjust this value to match your navbar height */
+		height: 100%;
+		background: #282c34;
+		margin-top: 60px; /* Adjust this value to match navbar height */
 
 	}
 	
@@ -35,13 +36,15 @@
 		margin-bottom: 15px;
 	}
 
-	#selection-area {
-		width: 300px;
-		height: 300px;
+	#game-area {
+		text-align: center;
+		width: 95%;
+		height: 95%;
 		background-color: #f0f0f0;
 		border: 1px solid #ddd;
-		margin-top: 20px;
-		position: relative:
+		margin-top: 60px;
+		position: relative;
+		overflow: hidden;
 	}
 	
 	.participant {
